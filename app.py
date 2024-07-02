@@ -4,8 +4,14 @@ import streamlit as st
 from utils.embed_data import embed_docs
 from utils.generate_response import get_llm_response
 
-UPLOAD_FOLDER = 'D:/projects/RAG/chatbot_api/src/data'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+# Get the directory containing the executable (assuming a single-file executable)
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+# Define a subdirectory within the executable's directory to store docs
+data_dir = os.path.join(script_dir, "data")
+
+# Create the directory if it doesn't exist
+os.makedirs(data_dir, exist_ok=True) 
 
 with st.sidebar:
     st.header("About")
@@ -26,7 +32,7 @@ with st.sidebar:
     if uploaded_files:
         for uploaded_file in uploaded_files:
             # Save file to the specified directory
-            file_path = os.path.join(UPLOAD_FOLDER, uploaded_file.name)
+            file_path = os.path.join(data_dir, uploaded_file.name)
             with open(file_path, "wb") as f:
                 f.write(uploaded_file.getbuffer())
             st.success(f"{uploaded_file.name} saved!")
