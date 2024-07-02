@@ -4,6 +4,6 @@ langchain
 langchain_community
 torch
 faiss-cpu
-dotenv
+python-dotenv
 asyncio
 streamlit
