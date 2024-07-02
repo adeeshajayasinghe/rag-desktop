@@ -17,8 +17,14 @@ huggingface_embeddings = HuggingFaceBgeEmbeddings(
 )
 
 async def get_llm_response(query):
+    # Get the directory containing the executable (assuming a single-file executable)
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+
+    # Define a subdirectory within the executable's directory to store FAISS data
+    vector_db_dir = os.path.join(script_dir, "vector_db")
+
     # load vector db
-    vector_db=FAISS.load_local("D:/projects/RAG/chatbot_api/src/vector_db", huggingface_embeddings, allow_dangerous_deserialization=True)
+    vector_db=FAISS.load_local(vector_db_dir, huggingface_embeddings, allow_dangerous_deserialization=True)
 
     retriever = vector_db.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
