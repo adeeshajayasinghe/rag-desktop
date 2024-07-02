@@ -1,5 +1,5 @@
 transformers
-sentence-tranformers
+sentence-transformers
 langchain
 langchain_community
 torch
