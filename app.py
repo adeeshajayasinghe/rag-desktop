@@ -8,7 +8,7 @@ from utils.generate_response import get_llm_response
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
 # Define a subdirectory within the executable's directory to store docs
-data_dir = os.path.join(script_dir, "data")
+data_dir = os.path.join(script_dir, "utils/data")
 
 # Create the directory if it doesn't exist
 os.makedirs(data_dir, exist_ok=True) 

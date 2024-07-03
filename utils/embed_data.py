@@ -17,20 +17,17 @@ async def embed_docs():
 
     # Load pdf files in the local directory
     loader = PyPDFDirectoryLoader(data_dir)
-
     docs_before_split = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size = 700,
         chunk_overlap  = 50,
     )
     docs_after_split = text_splitter.split_documents(docs_before_split)
-
     huggingface_embeddings = HuggingFaceBgeEmbeddings(
         model_name="BAAI/bge-small-en-v1.5", 
         model_kwargs={'device':'cpu'}, 
         encode_kwargs={'normalize_embeddings': True}
     )
-
     # Define a subdirectory within the executable's directory to store FAISS data
     vector_db_dir = os.path.join(script_dir, "vector_db")
 
