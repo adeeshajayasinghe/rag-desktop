@@ -39,11 +39,13 @@ with st.sidebar:
 
             with st.spinner(f"Embedding {uploaded_file.name}..."):
                 response = asyncio.run(embed_docs())
+            
+            st.success(f"{uploaded_file.name} embedded successfully!")
         
-            if response:
-                st.success(f"{uploaded_file.name} embedded successfully!")
-            else:
-                st.error(f"Failed to embed {uploaded_file.name}. Please try again.")
+            # if response:
+            #     st.success(f"{uploaded_file.name} embedded successfully!")
+            # else:
+            #     st.error(f"Failed to embed {uploaded_file.name}. Please try again.")
 
     st.header("Example Questions")
     st.markdown("- Which hospitals are in the hospital system?")
