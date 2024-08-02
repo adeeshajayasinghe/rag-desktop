@@ -19,8 +19,7 @@ with st.sidebar:
         """
         This chatbot interfaces with a
         [LangChain](https://python.langchain.com/docs/get_started/introduction)
-        agent designed to answer questions about the hospitals, patients,
-        visits, physicians, and insurance payers in  a fake hospital system.
+        agent designed to answer questions relevant to your uploaded content.
         The agent uses  retrieval-augment generation (RAG) over both
         structured and unstructured data that has been synthetically generated.
         """
@@ -48,56 +47,21 @@ with st.sidebar:
                 st.error(f"Failed to embed {uploaded_file.name}. Please try again.")
 
     st.header("Example Questions")
-    st.markdown("- Which hospitals are in the hospital system?")
+    st.markdown("- What is RAG?")
     st.markdown(
-        """- What is the current wait time at wallace-hamilton hospital?"""
+        """- How my knowledge base ensures it remains relevant and up-to-date?"""
     )
     st.markdown(
-        """- At which hospitals are patients complaining about billing and
-        insurance issues?"""
+        """- How can I fine-tune the chatbot's knowledge base?"""
     )
     st.markdown(
-        "- What is the average duration in days for closed emergency visits?"
+        "- Can I use this chatbot to create and maintain my own personalised study companion?"
     )
     st.markdown(
-        """- What are patients saying about the nursing staff at
-        Castaneda-Hardy?"""
+        """- How does the chatbot learn from the specific information in the uploaded documents?"""
     )
     st.markdown(
-        "- What was the total billing amount charged to each payer for 2023?"
-    )
-    st.markdown("- What is the average billing amount for medicaid visits?")
-    st.markdown(
-        "- Which physician has the lowest average visit duration in days?"
-    )
-    st.markdown("- How much was billed for patient 789's stay?")
-    st.markdown(
-        """- Which state had the largest percent increase in medicaid visits
-        from 2022 to 2023?"""
-    )
-    st.markdown(
-        "- What is the average billing amount per day for Aetna patients?"
-    )
-    st.markdown(
-        """- How many reviews have been written from
-                patients in Florida?"""
-    )
-    st.markdown(
-        """- For visits that are not missing chief complaints,
-       what percentage have reviews?"""
-    )
-    st.markdown(
-        """- What is the percentage of visits that have reviews for
-        each hospital?"""
-    )
-    st.markdown(
-        """- Which physician has received the most reviews for this visits
-        they've attended?"""
-    )
-    st.markdown("- What is the ID for physician James Cooper?")
-    st.markdown(
-        """- List every review for visits treated by physician 270.
-        Don't leave any out."""
+        "- What steps are involved in the practical implementation of this document-based chatbot?"
     )
 
 
