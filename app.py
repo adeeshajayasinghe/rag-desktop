@@ -107,8 +107,11 @@ if prompt := st.chat_input("What do you want to know?"):
             output_text = """An error occurred while processing your message.
             Please try again or rephrase your message."""
             explanation = output_text
+    
+    # Add new lines before and after the markdown content
+    formatted_output = f"\n{output_text}\n"
 
-    st.chat_message("assistant").markdown(output_text)
+    st.chat_message("assistant").markdown(formatted_output)
     st.status("How was this generated?", state="complete").info(explanation)
 
     st.session_state.messages.append(
