@@ -17,11 +17,8 @@ with st.sidebar:
     st.header("About")
     st.markdown(
         """
-        This chatbot interfaces with a
-        [LangChain](https://python.langchain.com/docs/get_started/introduction)
-        agent designed to answer questions relevant to your uploaded content.
-        The agent uses  retrieval-augment generation (RAG) over both
-        structured and unstructured data that has been synthetically generated.
+        Welcome to the DevOps Process Model Assistant! 
+        This chatbot is here to guide you through every stage of the DevOps lifecycle — plan, code, build, test, deploy, operate, monitor, and improve. 
         """
     )
 
@@ -49,24 +46,16 @@ with st.sidebar:
                 st.error(f"Failed to embed {uploaded_file.name}. Please try again.")
 
     st.header("Example Questions")
-    st.markdown("- What is RAG?")
-    st.markdown(
-        """- How my knowledge base ensures it remains relevant and up-to-date?"""
-    )
-    st.markdown("""- How can I fine-tune the chatbot's knowledge base?""")
-    st.markdown(
-        "- Can I use this chatbot to create and maintain my own personalised study companion?"
-    )
-    st.markdown(
-        """- How does the chatbot learn from the specific information in the uploaded documents?"""
-    )
-    st.markdown(
-        "- What steps are involved in the practical implementation of this document-based chatbot?"
-    )
+    st.markdown("- What is a blue-green deployment strategy?")
+    st.markdown("""- What are the key stages of a DevOps pipeline?""")
+    st.markdown("""- What are the best practices for security in DevOps?""")
+    st.markdown("- What does 'shift-left testing' mean in a DevOps context?")
+    st.markdown("""- How do you ensure code quality in a DevOps pipeline?""")
+    st.markdown("- What is Infrastructure as Code?")
 
 
-st.title("Private Educational Chatbot")
-st.info("""Ask me questions related to your uploaded documents!""")
+st.title("DevOps Model Assistant")
+st.info("""Ask me questions related to DevOps practices!""")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
