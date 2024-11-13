@@ -11,7 +11,7 @@ script_dir = os.path.dirname(os.path.realpath(__file__))
 data_dir = os.path.join(script_dir, "utils/data")
 
 # Create the directory if it doesn't exist
-os.makedirs(data_dir, exist_ok=True) 
+os.makedirs(data_dir, exist_ok=True)
 
 with st.sidebar:
     st.header("About")
@@ -25,7 +25,9 @@ with st.sidebar:
         """
     )
 
-    uploaded_files = st.file_uploader("Upload your PDFs", type=["pdf"], accept_multiple_files=True)
+    uploaded_files = st.file_uploader(
+        "Upload your PDFs", type=["pdf"], accept_multiple_files=True
+    )
 
     # Save uploaded PDFs locally
     if uploaded_files:
@@ -38,9 +40,9 @@ with st.sidebar:
 
             with st.spinner(f"Embedding {uploaded_file.name}..."):
                 response = asyncio.run(embed_docs())
-            
+
             # st.success(f"{uploaded_file.name} embedded successfully!")
-        
+
             if response:
                 st.success(f"{uploaded_file.name} embedded successfully!")
             else:
@@ -51,9 +53,7 @@ with st.sidebar:
     st.markdown(
         """- How my knowledge base ensures it remains relevant and up-to-date?"""
     )
-    st.markdown(
-        """- How can I fine-tune the chatbot's knowledge base?"""
-    )
+    st.markdown("""- How can I fine-tune the chatbot's knowledge base?""")
     st.markdown(
         "- Can I use this chatbot to create and maintain my own personalised study companion?"
     )
@@ -66,9 +66,7 @@ with st.sidebar:
 
 
 st.title("Private Educational Chatbot")
-st.info(
-    """Ask me questions related to your uploaded documents!"""
-)
+st.info("""Ask me questions related to your uploaded documents!""")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -91,14 +89,14 @@ if prompt := st.chat_input("What do you want to know?"):
 
     with st.spinner("Searching for an answer..."):
         response = asyncio.run(get_llm_response(prompt))
-
+        print(response)
         if response:
             output_text = response["result"]
             source_docs = response["source_documents"]
 
             unique_sources = set()
             for doc in source_docs:
-                source = doc.metadata['source']
+                source = doc.metadata["source"]
                 if source:
                     unique_sources.add(source)
             explanation = "Sources:\n" + "\n".join(unique_sources)
@@ -107,7 +105,6 @@ if prompt := st.chat_input("What do you want to know?"):
             output_text = """An error occurred while processing your message.
             Please try again or rephrase your message."""
             explanation = output_text
-            
 
     st.chat_message("assistant").markdown(output_text)
     st.status("How was this generated?", state="complete").info(explanation)
