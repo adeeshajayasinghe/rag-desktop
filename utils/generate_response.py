@@ -11,10 +11,11 @@ load_dotenv()
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 huggingface_embeddings = HuggingFaceBgeEmbeddings(
-    model_name="BAAI/bge-small-en-v1.5", 
-    model_kwargs={'device':'cpu'}, 
-    encode_kwargs={'normalize_embeddings': True}
+    model_name="BAAI/bge-small-en-v1.5",
+    model_kwargs={"device": "cpu"},
+    encode_kwargs={"normalize_embeddings": True},
 )
+
 
 async def get_llm_response(query):
     # Get the directory containing the executable (assuming a single-file executable)
@@ -24,14 +25,18 @@ async def get_llm_response(query):
     vector_db_dir = os.path.join(script_dir, "vector_db")
 
     # load vector db
-    vector_db=FAISS.load_local(vector_db_dir, huggingface_embeddings, allow_dangerous_deserialization=True)
+    vector_db = FAISS.load_local(
+        vector_db_dir, huggingface_embeddings, allow_dangerous_deserialization=True
+    )
 
     retriever = vector_db.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
     repo_id = "mistralai/Mistral-7B-Instruct-v0.3"
 
     llm = HuggingFaceEndpoint(
-        repo_id=repo_id, max_length=128, temperature=0.5, huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN
+        repo_id=repo_id,
+        temperature=0.5,
+        huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN,
     )
 
     prompt_template = """Use the following pieces of context to answer the question at the end. Please follow the following rules:
@@ -46,7 +51,7 @@ async def get_llm_response(query):
     """
 
     PROMPT = PromptTemplate(
-    template=prompt_template, input_variables=["context", "question"]
+        template=prompt_template, input_variables=["context", "question"]
     )
 
     retrievalQA = RetrievalQA.from_chain_type(
@@ -54,7 +59,7 @@ async def get_llm_response(query):
         chain_type="stuff",
         retriever=retriever,
         return_source_documents=True,
-        chain_type_kwargs={"prompt": PROMPT}
+        chain_type_kwargs={"prompt": PROMPT},
     )
 
     return await retrievalQA.ainvoke({"query": query})
