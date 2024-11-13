@@ -89,7 +89,7 @@ if prompt := st.chat_input("What do you want to know?"):
 
     with st.spinner("Searching for an answer..."):
         response = asyncio.run(get_llm_response(prompt))
-        print(response)
+        print("response: ", response)
         if response:
             output_text = response["result"]
             source_docs = response["source_documents"]
