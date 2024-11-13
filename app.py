@@ -89,7 +89,6 @@ if prompt := st.chat_input("What do you want to know?"):
 
     with st.spinner("Searching for an answer..."):
         response = asyncio.run(get_llm_response(prompt))
-        print("response: ", response)
         if response:
             output_text = response["result"]
             source_docs = response["source_documents"]
@@ -106,7 +105,7 @@ if prompt := st.chat_input("What do you want to know?"):
             Please try again or rephrase your message."""
             explanation = output_text
 
-    st.chat_message("assistant").markdown(output_text)
+    st.chat_message("assistant").markdown("output_text")
     st.status("How was this generated?", state="complete").info(explanation)
 
     st.session_state.messages.append(
