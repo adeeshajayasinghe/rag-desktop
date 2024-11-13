@@ -35,6 +35,7 @@ async def get_llm_response(query):
 
     llm = HuggingFaceEndpoint(
         repo_id=repo_id,
+        max_length=512,
         temperature=0.5,
         huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN,
     )
