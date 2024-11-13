@@ -105,7 +105,7 @@ if prompt := st.chat_input("What do you want to know?"):
             Please try again or rephrase your message."""
             explanation = output_text
 
-    st.chat_message("assistant").markdown("output_text")
+    st.chat_message("assistant").markdown(response)
     st.status("How was this generated?", state="complete").info(explanation)
 
     st.session_state.messages.append(
