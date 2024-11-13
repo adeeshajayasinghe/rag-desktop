@@ -42,7 +42,6 @@ async def get_llm_response(query):
 
     prompt_template = """Use the following pieces of context to answer the question at the end. Please follow the following rules:
     1. If you don't know the answer, don't try to make up an answer. Just say "I can't find the final answer but you may want to check the following links".
-    2. Please provide your answer in paragraph form only, without using bullet points or numbered lists. 
 
     {context}
 
