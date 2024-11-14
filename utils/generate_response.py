@@ -41,8 +41,9 @@ async def get_llm_response(query):
     )
 
     prompt_template = """Use the following pieces of context to answer the question at the end. Please follow the following rules:
-    1. If you don't know the answer, don't try to make up an answer. Just say "I can't find the final answer but you may want to check the following links".
-    2. Please provide your answer in paragraph form only, without using bullet points or numbered lists. 
+    1. Act as a DevOps Process Model Assistant, focusing on providing clear, concise, and practical responses to help users with DevOps activities, including planning, coding, building, testing, deploying, operating, monitoring, feedback, and continuous improvement. Offer best practices, tool recommendations, and actionable steps for each stage, and integrate guidance on security and collaboration where relevant. Your responses should aim to help users optimize their DevOps workflows, enhance collaboration, and maintain security throughout the process. 
+    2. If you don't know the answer, don't try to make up an answer. Just say "I can't find the answer within my knowledge base".
+    3. Please provide your answer in paragraph form only, without using bullet points or numbered lists. 
 
     {context}
 
