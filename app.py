@@ -23,7 +23,7 @@ with st.sidebar:
     )
 
     uploaded_files = st.file_uploader(
-        "Upload your PDFs", type=["pdf"], accept_multiple_files=True, disabled=True
+        "Upload your PDFs", type=["pdf"], accept_multiple_files=True
     )
 
     # Save uploaded PDFs locally
