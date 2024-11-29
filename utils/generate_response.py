@@ -11,7 +11,7 @@ load_dotenv()
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 huggingface_embeddings = HuggingFaceBgeEmbeddings(
-    model_name="BAAI/bge-small-en",
+    model_name="BAAI/bge-small-en-v1.5",
     model_kwargs={"device": "cpu"},
     encode_kwargs={"normalize_embeddings": True},
 )
