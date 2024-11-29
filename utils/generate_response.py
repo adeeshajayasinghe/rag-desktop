@@ -6,6 +6,7 @@ from langchain_community.llms import HuggingFaceEndpoint
 from dotenv import load_dotenv
 import os
 
+os.environ["HF_HOME"] = "/data/shared_models/"
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 load_dotenv()
 
