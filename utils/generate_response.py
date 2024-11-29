@@ -6,6 +6,7 @@ from langchain_community.llms import HuggingFaceEndpoint
 from dotenv import load_dotenv
 import os
 
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 load_dotenv()
 
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
