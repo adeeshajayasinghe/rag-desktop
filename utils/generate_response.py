@@ -5,10 +5,11 @@ from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 from langchain_community.llms import HuggingFaceEndpoint
 from dotenv import load_dotenv
 import os
+import streamlit as st
 
 load_dotenv()
 
-HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+HUGGINGFACEHUB_API_TOKEN = st.secrets("HUGGINGFACEHUB_API_TOKEN")
 
 huggingface_embeddings = HuggingFaceBgeEmbeddings(
     model_name="BAAI/bge-small-en-v1.5",
