@@ -2,7 +2,9 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
-from langchain_community.llms import HuggingFaceEndpoint
+
+# from langchain_community.llms import HuggingFaceEndpoint
+from langchain_huggingface import HuggingFaceEndpoint
 from dotenv import load_dotenv
 import os
 import streamlit as st

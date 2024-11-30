@@ -8,3 +8,4 @@ python-dotenv
 asyncio
 streamlit
 pypdf
+langchain_huggingface
