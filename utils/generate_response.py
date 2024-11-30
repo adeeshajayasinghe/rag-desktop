@@ -9,7 +9,7 @@ import streamlit as st
 
 load_dotenv()
 
-HUGGINGFACEHUB_API_TOKEN = st.secrets("HUGGINGFACEHUB_API_TOKEN")
+HUGGINGFACEHUB_API_TOKEN = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
 huggingface_embeddings = HuggingFaceBgeEmbeddings(
     model_name="BAAI/bge-small-en-v1.5",
