@@ -38,7 +38,7 @@ async def get_llm_response(query):
         repo_id=repo_id,
         max_length=512,
         temperature=0.5,
-        huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN,
+        huggingfacehub_api_token="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",
     )
 
     prompt_template = """Use the following pieces of context to answer the question at the end. Please follow the following rules:
